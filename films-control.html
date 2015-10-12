@@ -1,0 +1,150 @@
+<head>
+  <title>Controle de Filmes</title>
+</head>
+ 
+<body>
+  <header>
+    <div class="ui centered grid">
+		  <div class="column">
+		    <h2 class="ui teal image header">
+		      <div class="content">
+		        Controle de Filmes
+		      </div>
+		    </h2>
+		    <form class="new-film ui large form">
+		      <div class="ui stacked segment">
+
+	          <div class="field">
+	            <input type="text" name="title" placeholder="Titulo" class="ui input"/>
+	          </div>
+
+		        <div class="field">
+		          <textarea name="synopsis" placeholder="Sinopse"  rows="2"></textarea>
+		        </div>
+
+		        <h4 class="ui dividing header">Mídia</h4>
+		        <div class="field ui input">
+							{{> upload_semanticUI fileTypes='.jpg' contentType='images'}}
+		        </div>
+		        <div class="field">
+		          <input type="text" name="url_trailer" placeholder="Url do Trailer" />
+		        </div>
+
+		        <h4 class="ui dividing header">Dados do filme</h4>
+		        <div class="three fields">
+		          <div class="eight wide field ui input">
+		            <input type="text" name="genre" placeholder="Genero" />
+		          </div>
+		          <div class="four wide field ui input">
+		          	<input type="text" name="year" placeholder="Ano" />
+		          </div>
+			        <div class="four wide field ui input">
+			            <input type="text" name="length" placeholder="Duração" />
+			        </div>
+		        </div>
+		        <div class="two fields">
+		        	<div class="field ui input">
+			          <input type="text" name="country" placeholder="País" />
+			        </div>
+		          <div class="field ui input">
+			          <input type="text" name="distributor" placeholder="Distribuidora" />
+			        </div>
+			      </div>
+
+		        <h4 class="ui dividing header">Informações técnicas</h4>
+		        <div class="two fields">
+			        <div class="field ui input">
+			          <input type="text" name="director" placeholder="Diretor" />
+			        </div>
+			        <div class="field ui input">
+			          <input type="text" name="writer" placeholder="Roteirista" />
+			        </div>
+			      </div>
+		       
+		      	<div class="two fields">
+			        <div class="field ui input">
+			          <input type="text" name="soundtrack" placeholder="Trilha Sonora" />
+			        </div>
+			        <div class="field ui input">
+			          <input type="text" name="editor" placeholder="Montagem" />
+			        </div>
+			      </div>
+		        <button class="ui fluid large teal submit button" type="submit">Enviar</button>
+		      </div>
+
+		      <div class="ui error message"></div>
+
+		    </form>
+		  </div>
+		</div>
+
+<!--     <form class="new-film ui form">
+    	<h4 class="ui dividing header">Dados do filme</h4>
+    	<div class="field">
+      	<input type="text" name="title" placeholder="title" />
+      </div>
+      <div class="field">
+      	<input type="text" name="synopsis" placeholder="synopsis" />
+      </div>
+      <h4 class="ui dividing header">Mídia</h4>
+ 
+			    {{> upload_semanticUI fileTypes='.jpg' contentType='images'}}
+		
+      <hr>
+
+      <input type="text" name="trailer" placeholder="trailer" />
+      <input type="text" name="cartaz" placeholder="cartaz
+      
+      <h4 class="ui dividing header">Informações técnicas</h4>
+      <div class="field">
+      	<input type="text" name="genre" placeholder="genre" />
+      </div>
+      <div class="field">
+      	<input type="text" name="year" placeholder="year" />
+      </div>
+      <div class="field">
+      	<input type="text" name="length" placeholder="length" />
+      </div>
+      <div class="field">
+      	<input type="text" name="distributor" placeholder="distributor" />
+      </div>
+
+      <h4 class="ui dividing header">Equipe</h4>
+ 
+      <div class="field">
+      	<input type="text" name="director" placeholder="director" />
+      </div>
+      <div class="field">
+      	<input type="text" name="writer" placeholder="writer" />
+      </div>
+      <div class="field">
+      	<input type="text" name="soundtrack" placeholder="soundtrack" />
+      </div>
+      <div class="field">
+      	<input type="text" name="editor" placeholder="editor" />
+      </div>
+      <div class="field">
+      	<input type="text" name="producer" placeholder="producer" />
+      </div> 
+      <div class="field">
+      	<button class="ui button" type="submit">Enviar</button>
+      </div>
+    </form> -->
+  </header>
+
+    <ul>
+      {{#each films}}
+        {{> film}}
+      {{/each}}
+    </ul>
+</body>
+ 
+<template name="film">
+  <li class="{{#if checked}}checked{{/if}}">
+    <button class="delete">&times;</button>
+ 
+    <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+ 
+    <span class="name">{{title}}</span>
+  </li>
+</template>
