@@ -5,6 +5,7 @@ To do:
 - Assistir trailer via modal;
 - Traduzir retornos de validação de formulário;
 - Envio de textos concatenados para tela, evitando logica junto com o html;
+- Resetar progress bar.
 
 Feito!
 - CRUD de filme;
