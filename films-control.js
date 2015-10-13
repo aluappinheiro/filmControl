@@ -1,5 +1,5 @@
 Films = new Mongo.Collection("films");
- 
+
 if (Meteor.isClient) {
   Template.body.helpers({
     films: function () {
@@ -11,11 +11,12 @@ if (Meteor.isClient) {
     "submit .new-film": function (event) {
       console.log("Pã!");
 
+      var poster_url = Session.get("poster_url");
+      
       event.preventDefault();
-
+      
       var title = event.target.title.value;
       var synopsis = event.target.synopsis.value;
-      var image_path = Session.get("image_path");
       var url_trailer = event.target.url_trailer.value;
       var genre = event.target.genre.value;
       var year = event.target.year.value;
@@ -30,17 +31,19 @@ if (Meteor.isClient) {
       Films.insert({
         title: title,
         synopsis: synopsis,
-        posterpath: image_path,
-        url_trailer: url_trailer;
-        genre: genre;
-        year: year;
-        length: length;
-        country: country;
-        distributor: distributor;
-        director: director;
-        writer: writer;
-        soundtrack: soundtrack;
-        editor: editor;
+        poster_url: poster_url,
+        url_trailer: url_trailer,
+        film_data: {
+          genre: genre,
+          year: year,
+          length: length,
+          country: country,
+          distributor: distributor
+        },
+        director: director,
+        writer: writer,
+        soundtrack: soundtrack,
+        editor: editor,
         createdAt: new Date()
       });
  
@@ -56,6 +59,9 @@ if (Meteor.isClient) {
     },
     "click .delete": function () {
       Films.remove(this._id);
+    },
+    "click .trailer": function () {
+      $(this.url_trailer).attr('target', '_blank');
     }
   });
 }
