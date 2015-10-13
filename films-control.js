@@ -52,11 +52,6 @@ if (Meteor.isClient) {
   });
  
   Template.film.events({
-    "click .toggle-checked": function () {
-      Films.update(this._id, {
-        $set: {checked: ! this.checked}
-      });
-    },
     "click .delete": function () {
       Films.remove(this._id);
     },
